@@ -1,0 +1,825 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --primary: #ee2f33;
+    --dark: #2e2e2e;
+    --gray-dark: #494d50;
+    --gray-medium: #8d9097;
+    --gray-light: #e8e7e7;
+    --white: #fefefe;
+    --accent: #e6c33e;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/*-----------------------------------------------------------------*/
+
+.asphalt-bg {
+    position: relative;
+    z-index: 0;
+}
+
+.asphalt-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/backSocorro1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.3;   
+    z-index: -1;    
+}
+
+
+h2 {
+    color: black;
+}
+
+/*-----------------------------------------------------------------*/
+.navbar {
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(105, 35, 35, 0.1);
+    display: none;
+    transition: all 0.3s ease;
+}
+
+/*Ítens links do menu navbar*/
+.navMenu:hover {
+    color: var(--light-gray);
+    font-weight: bold;
+}
+
+
+.visible {
+    display: flex;
+}
+
+.navbar.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-brand img {
+    height: 70px;    
+    width: 70px;    
+    border-radius: 50%;   
+    transition: all 0.3s ease;   
+    box-shadow: 2px 2px 3px var(--gray-dark);
+}
+
+/*----------------------------------------------------------------*/
+
+.emergency-phone {
+    background-color: var(--white);
+    border: 2px solid var(--primary);
+    border-radius: 25px;
+    padding: 8px 20px;
+    color: var(--primary);
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.emergency-phone:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.emergency-24h {
+    font-size: 1.2em;   
+    margin-right: 8px;   
+    font-weight: bold;
+}
+
+.emergency-phone i {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/*---------------------------------------------------------------*/
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*background-color: var(--white);*/
+}
+
+.hero img {
+    max-width: 70%;
+    transition: all 0.5s ease;
+    border-radius: 50%;
+    box-shadow: 3px 3px 5px var(--gray-dark);    
+}
+
+/* Classe que será aplicada via JavaScript */
+.hero-hidden {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;    
+}
+
+
+
+/*-----------------------------------------------------------*/
+
+/* Oculta elementos em telas menores ou iguais a 768px */
+/*--Ajuste de breakpoint para a imagem do caminhão*/
+@media (max-width: 992px) {
+    .hide-on-mobile {
+        display: none;
+    }
+}
+
+/*--------------------------------------------------------------*/
+/*Seção FAQ*/
+#faq .accordion {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;   
+    backdrop-filter: blur(10px);
+    background-color: transparent;
+    padding: 1rem;
+}
+
+/* Estilo opcional para os itens do accordion */
+#faq .accordion-item {
+    margin-bottom: 1rem;
+    backdrop-filter: blur(10px);
+    background-color: transparent;
+}
+
+/*-----------------------------------------------------------------*/
+/*Seção serviços*/
+/* Estilo dos cards de serviços */
+#servicos .myCards {
+    background-color: #e83638;
+    color: #e6e4e4;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+#servicos .myCards img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#servicos .myCards:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 14px rgba(0, 0, 0, 0.3);
+}
+
+#servicos .myCards:hover img {
+    transform: scale(1.1);    
+}
+
+#servicos .myCards .card-title {
+    color: #e6e4e4;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow:2px 2px 4px black;
+}
+
+#servicos .myCards .card-text {
+    color: #e6e4e4;
+    font-weight:500;
+}
+
+
+/*--------------------------------------------------------------------*/
+/*----Seção do mapa------------------------------------------------*/
+
+#map {
+    height: 400px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.locate-btn {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+/*------------------------------------------------------------------*/
+/*Estilização da section id #contato*/
+
+#contato .contact-icon,
+#contato a,
+#contato span {
+    color: black;
+    text-decoration: none;
+}
+
+.contact-icon {
+    font-size: 2em;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+
+/* Ajuste opcional para manter a consistência */
+#contato p {
+    color: black;
+}
+
+/*Efeitos hover icons*/
+
+/* Animação hover */
+.whatsapp:hover {
+    color: #25d366 !important;
+    text-shadow: 1px 1px 2px black;   
+    transform: scale(1.3) translateX(-3px);
+
+}
+
+.facebook:hover {
+    color: #3b5998 !important;
+    text-shadow: 1px 1px 2px black;
+    /*transform: scale(1.3);*/
+    transform: scale(1.3) translateX(-3px);
+}
+
+.instagram:hover {
+    background: linear-gradient(45deg, #833AB4, #FD1D1D, #F56040, #FFC107);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: scale(1.3);
+    transition: all 0.3s ease;
+}
+
+
+
+.mail:hover {
+    color: #ea4335 !important;
+    text-shadow: 1px 1px 2px black;
+    /*transform: scale(1.3);*/
+    transform: scale(1.3) translateX(-3px);
+}
+
+.phone:hover {
+    color: #0077B5 !important;
+    text-shadow: 1px 1px 2px black;
+    /*transform: scale(1.3);*/
+    transform: scale(1.3) translateX(-3px);
+}
+
+
+
+
+
+/*--------------------------------------------------------------*/
+/*Estilização do menu hamburguer*/
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Filtros SVG aplicados ao menu */
+.menu {
+    filter: url('#shadowed-goo');
+    position: relative;
+    padding-top: 20px;
+    padding-left: 80px;
+    width: 650px;
+    height: 150px;
+    box-sizing: border-box;
+    font-size: 20px;
+    text-align: left;
+}
+
+/* Checkbox oculto */
+.menu-open {
+    display: none;
+}
+
+/* Estilos do botão de abrir menu */
+.menu-open-button {
+    background: #ee3135;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-left: -40px;   
+    position: absolute;
+    top: 20px;
+    color: white;
+    text-align: center;
+    line-height: 80px;
+    transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    transition: transform 400ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    cursor: pointer;
+    z-index: 2;
+
+}
+
+/* Efeito hover no botão de abrir menu */
+.menu-open-button:hover {
+    transform: scale(1.2, 1.2) translate3d(0, 0, 0);
+}
+
+
+.menu-open-button i {
+    position: absolute;    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2em;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.closed-icon {
+    /* Ícone visível quando o menu está fechado */
+    opacity: 1;
+}
+
+.opened-icon {
+    /* Ícone escondido quando o menu está fechado */
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+/* Quando o menu está aberto */
+.menu-open:checked+.menu-open-button .closed-icon {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.menu-open:checked+.menu-open-button .opened-icon {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+
+/* Estilos do botão de abrir menu quando o menu está aberto */
+.menu-open:checked+.menu-open-button {
+    transition-timing-function: linear;
+    transition-duration: 200ms;
+    transform: scale(0.8, 0.8) translate3d(0, 0, 0);
+}
+
+/* Estilos dos itens do menu: cor original gerada:#ee3135 */
+/*Estilo original*/
+.menu-item {
+    background: #ee3135;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-left: -40px;
+    position: absolute;
+    top: 20px;
+    color: #ffff;
+    text-align: center;
+    line-height: 80px;
+    transform: translate3d(0, 0, 0);
+    transition: transform ease-out 200ms;
+    cursor: pointer;    
+    transition-duration: 180ms;    
+}
+
+
+/*Estilo original*/
+.menu-item:hover {
+    background: white;
+    color: #494d50;    
+    transform: scale(1.1);
+    transition-duration: 180ms;
+}
+
+
+
+
+/*-------------------------------------------------------------------*/
+/* Especificar transições para cada item usando nth-child */
+.menu-open:checked~.menu-item:nth-child(3) {
+    transition-duration: 190ms;    
+    transform: translate3d(110px, 0, 0);   
+
+}
+
+.menu-open:checked~.menu-item:nth-child(4) {
+    transition-duration: 290ms;    
+    transform: translate3d(220px, 0, 0);    
+
+}
+
+.menu-open:checked~.menu-item:nth-child(5) {
+    transition-duration: 390ms;
+   
+    transform: translate3d(330px, 0, 0);
+    
+}
+
+.menu-open:checked~.menu-item:nth-child(6) {
+    transition-duration: 490ms;    
+    transform: translate3d(440px, 0, 0);   
+
+}
+
+/* Novo botão: nth-child(7) */
+.menu-open:checked~.menu-item:nth-child(7) {
+    transition-duration: 590ms;    
+    transform: translate3d(550px, 0, 0);   
+}
+
+/*-----------------------------------------------------------------*/
+/*Seção de boas vindas*/
+.hero-row {
+    padding-top: calc(70px + 50px);    
+}
+
+.slide-from-left {
+    transform: translateX(-100%);
+    transition: all 0.8s ease-out;    
+}
+
+.slide-from-right {
+    transform: translateX(100%);
+    transition: all 0.8s ease-out;    
+}
+
+.slide-in {
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+}
+
+/*------------------------------------------------------------*/
+/*Card de boas vindas*/
+#welcomeCard {
+    position: relative;
+    top: 60px;
+    /*border:3px solid grey;*/
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#welcomeCard p {
+    letter-spacing: 3px;
+}
+
+#welcomeCard h4 {
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px black;
+}
+
+.bvP1 {
+    color: #2B2D30;
+}
+
+.bvP2 {
+    color: black;    
+    font-weight: 600;
+}
+
+/*-------------------------------------------------------------------*/
+
+/* Banner de impacto para mobile */
+.impact-message {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to bottom, #ee3135, #8d9097);
+    color: #fff;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-in-out;
+    position: relative;
+    top: 30%;
+    left: 0;
+    bottom: 20%;    
+    z-index: 1;
+}
+
+.impact-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.impact-text {
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+.impact-subtext {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.impact-message a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.impact-message a:hover {
+    text-decoration: underline;
+}
+
+
+/*------------------------------------------------------------------------*/
+/* Responsividade da div impact-message...*/
+/*#para espaçamento em tablets e smartphones medios */
+@media (min-width: 768px) and (max-width: 991px) {
+    .impact-message {
+        margin-top: 30px;
+    }
+}
+
+
+/*#para espaçamento em smartphones pequenos */
+@media (min-width: 320px) {
+    .impact-message {
+        margin-top: -210px;
+    }
+}
+
+
+
+
+
+/*---------------------------------------------------------------*/
+/*Responsividade da imagem da capa*/
+@media (min-width: 992px) {
+
+    /* Para telas maiores (como desktops) */
+    .hero img {
+        max-width: 50%;       
+    }
+}
+
+/*------------------------------------------------------------------*/
+/*Responsividade do elemento "a" class .emergency-phone*/
+/* Ajuste específico para a largura menor */
+@media (max-width: 371px) {
+    .emergency-phone {
+        padding: 6px 15px;        
+        font-size: 0.9rem;        
+    }
+
+    /* Ajusta a largura e altura da logo para acomodar o espaço */
+    .navbar-brand img {
+        height: 50px;
+        width: 50px;
+    }
+}
+
+/*Ajuste específico para largura menor que 324px*/
+@media (max-width: 323px) {
+    .emergency-phone {
+        padding: 6px 14px;       
+        font-size: 12px;        
+    }
+
+    .navbar-brand img {
+        height: 50px;        
+        width: 50px;       
+    }
+}
+
+/*----------------------------------------------------------------*/
+
+/*Responsividade da cx de ferramentas*/
+/* Estilos responsivos para mobile */
+@media (max-width: 991.98px) {
+    .menu-container {
+        /*border:1px solid red;*/
+        order: 3;
+        /* Colocar o menu hambúrguer por último na ordem de exibição */
+        width: 100%;
+        margin-top: 1rem;
+        padding-left: 3px
+    }
+
+    .menu {
+        padding-left: 15px;
+        width: 100%;
+        height: 100px;
+    }
+
+    .menu-open-button,
+    .menu-item {
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+        font-size: 13px;
+    }
+
+    .menu-open-button {
+        top: 10px;
+        margin-left: -25px;
+    }
+
+    .menu-item {
+        top: 10px;
+        margin-left: -25px;
+    }
+
+    .menu-open-button i,
+    .menu-item i {
+        font-size: 1em;
+    }
+
+    #gerarRelatorio {
+        padding: 10px;
+    }
+
+    /* Espaçamento entre os botões quando o menu está aberto */
+    .menu-open:checked~.menu-item:nth-child(3) {
+        transform: translate3d(57px, 0, 0);
+    }
+
+    .menu-open:checked~.menu-item:nth-child(4) {
+        transform: translate3d(120px, 0, 0);
+    }
+
+    .menu-open:checked~.menu-item:nth-child(5) {
+        transform: translate3d(183px, 0, 0);
+    }
+
+    .menu-open:checked~.menu-item:nth-child(6) {
+        transform: translate3d(244px, 0, 0);
+    }
+
+    .menu-open:checked~.menu-item:nth-child(7) {
+        transform: translate3d(305px, 0, 0);
+    }
+
+}
+
+/* Estilos para telas menores que 768px */
+@media (max-width: 767.98px) {
+    .menu-container {
+        order: 3;
+        width: 100%;
+        margin-top: 1rem;
+        padding-left: 8px
+    }
+
+    .menu {
+        padding-left: 8px;
+        width: 100%;
+        height: 90px;
+    }
+
+    .menu-open-button,
+    .menu-item {
+        width: 42px;
+        height: 42px;
+        line-height: 42px;
+        font-size: 13px;
+    }
+
+    .menu-open-button {
+        top: 10px;
+        margin-left: -22.5px;
+    }
+
+    .menu-item {
+        top: 10px;
+        margin-left: -22.5px;
+    }
+
+    .menu-open-button i,
+    .menu-item i {
+        font-size: 0.95em;
+    }
+
+    #gerarRelatorio {
+        padding: 10px;
+    }
+
+    /* Espaçamento entre os botões quando o menu está aberto */
+    .menu-open:checked~.menu-item:nth-child(3) {
+        transform: translate3d(57px, 0, 0);
+    }
+
+    .menu-open:checked~.menu-item:nth-child(4) {
+        transform: translate3d(120px, 0, 0);
+    }
+
+    .menu-open:checked~.menu-item:nth-child(5) {
+        transform: translate3d(183px, 0, 0);
+    }
+
+    .menu-open:checked~.menu-item:nth-child(6) {
+        transform: translate3d(244px, 0, 0);
+    }
+
+    .menu-open:checked~.menu-item:nth-child(7) {
+        transform: translate3d(305px, 0, 0);
+    }
+
+}
+
+/* Estilos para telas menores que 321px */
+@media (max-width: 320px) {
+    .menu-container {
+        order: 3;
+        width: 100%;
+        margin-top: 1rem;
+        padding-left: 6px;
+    }
+
+    .menu {
+        padding-left: 10px;
+        width: 100%;
+        height: 80px;
+    }
+
+    .menu-open-button,
+    .menu-item {
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        font-size: 11px;
+    }
+
+    .menu-open-button {
+        top: 10px;
+        margin-left: -21px;
+    }
+
+    .menu-item {
+        top: 10px;
+        margin-left: -21px;
+    }
+
+    .menu-open-button i,
+    .menu-item i {
+        font-size: 1em;
+    }
+
+    #gerarRelatorio {
+        font-size: 1em;
+        padding: 10px;
+    }
+
+    /* Espaçamento entre os botões quando o menu está aberto */
+    .menu-open:checked~.menu-item:nth-child(3) {
+        transform: translate3d(50px, 0, 0);
+    }
+
+    .menu-open:checked~.menu-item:nth-child(4) {
+        transform: translate3d(100px, 0, 0);
+    }
+
+    .menu-open:checked~.menu-item:nth-child(5) {
+        transform: translate3d(150px, 0, 0);
+    }
+
+    .menu-open:checked~.menu-item:nth-child(6) {
+        transform: translate3d(200px, 0, 0);
+    }
+
+    .menu-open:checked~.menu-item:nth-child(7) {
+        transform: translate3d(250px, 0, 0);
+    }
+
+}
