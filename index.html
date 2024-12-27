@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta https-equiv="X-UA-Compatible" content="IE = edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Landing Page JR Guinchos">
+    <meta name="keywords"
+        content="Aplicação Web, Serviços de guincho, Remoção de veículos e equipamentos, Aplicativo web responsivo, programação front end">
+    <meta name="author" content="Daniel Lopes Bemfica">
+    <title>Serviço de Guincho 24h</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--BootstrapIcons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="./css/styleVictor.css">
+    <link rel="stylesheet" href="./css/sliderVictor.css">
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="./images/jrGuinchosCowboyLogoRedim.png" alt="Logo Guincho">
+            </a>
+
+            <a href="tel:51999626407" class="emergency-phone  align-items-center me-4">
+                <span class="emergency-24h">24h</span>
+                <i class="fas fa-phone me-2"></i>
+                (51) 99962-6407
+            </a>
+
+            <!--Menu mobile-->
+            <div class="menu-container d-lg-none">
+
+                <nav class="menu">
+                    <input type="checkbox" class="menu-open" name="menu-open" id="menu-open">
+
+                    <label class="menu-open-button" for="menu-open">
+                        <i class="bi bi-wrench-adjustable closed-icon"></i>
+                        <i class="fa-solid fa-box-open opened-icon"></i>
+                    </label>
+
+                    <a href="#servicos" class="menu-item" id="analiseModalFiltros"><i class="bi bi-tools"
+                            title="Serviços"></i></a>
+                    <a href="#faq" class="menu-item" id="dash"><i class="fa-solid fa-clipboard-question"
+                            title="FAQ"></i></a>
+                    <a href="#galery" class="menu-item"><i class="bi bi-camera-fill" title="Galeria"></i></a>
+                    <a href="#localizacao" class="menu-item"><i class="bi bi-geo-alt-fill" title="Localização"
+                            id="gerarRelatorio"></i></a>
+                    <a href="#contato" class="menu-item"><i class="fa-solid fa-people-group" title="Contatos"></i></a>
+                </nav>
+
+                <!-- Filters (SVG para efeito "goo") -->
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none;">
+                    <defs>
+                        <filter id="shadowed-goo">
+                            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+                            <feColorMatrix in="blur" mode="matrix" values="
+                                1 0 0 0 0
+                                0 1 0 0 0
+                                0 0 1 0 0
+                                0 0 0 18 -7
+                            " result="goo" />
+                            <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
+                            <feColorMatrix in="shadow" mode="matrix" values="
+                                0 0 0 0 0
+                                0 0 0 0 0
+                                0 0 0 0 0
+                                0 0 0 1 -0.2
+                            " result="shadow" />
+                            <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+                            <feComposite in2="shadow" in="goo" result="goo" />
+                            <feComposite in2="goo" in="SourceGraphic" result="mix" />
+                        </filter>
+                        <filter id="goo">
+                            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+                            <feColorMatrix in="blur" mode="matrix" values="
+                                1 0 0 0 0
+                                0 1 0 0 0
+                                0 0 1 0 0
+                                0 0 0 18 -7
+                            " result="goo" />
+                            <feComposite in2="goo" in="SourceGraphic" result="mix" />
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+
+            <!--Menu desktop-->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item navMenu">
+                        <a class="nav-link" href="#servicos"
+                            title="Clique aqui e navegue pelos nossos serviços!">Serviços</a>
+                    </li>
+
+                    <li class="nav-item navMenu">
+                        <a class="nav-link" href="#faq" title="Perguntas frequentes">FAQ</a>
+                    </li>
+
+                    <li class="nav-item navMenu">
+                        <a class="nav-link" href="#galery" title="Desfrute da nossa galeria de fotos!">Galeria</a>
+                    </li>
+
+                    <li class="nav-item navMenu">
+                        <a class="nav-link" href="#localizacao"
+                            title="Área de atendimento e localização da empresa. ">Localização</a>
+                    </li>
+
+                    <li class="nav-item navMenu">
+                        <a class="nav-link" href="#contato" title="Aqui, todas as formas de nos contactar!">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="./images/jrGuinchosCowboyLogo.png" alt="Logo Grande" id="heroLogo">
+    </section>
+
+    <!--Seção de boas vindas-->
+    <div class="row mt-5 hide-on-mobile hero-row">
+        <!--Imagem do caminhão-->
+        <!--<div class="col-10 d-block col-md-6 my-5">
+            <div class="slide-from-left" id="truckImage" style="opacity: 0;">
+                <img src="./images/jrRemocCar10SemFundo.png" alt="Caminhão Guincho" class="img-fluid">
+            </div>
+        </div>-->
+
+        <!--Div de boas vindas-->
+        <div class="col-10 col-md-5 my-5 m-auto slide-from-right" id="welcomeCard" style="opacity: 0;">
+
+            <p class="ms-2 fs-3 fw-bold bvP1">
+                BEM VINDO À JR GUINCHOS
+            </p>
+            <h4 class="ms-2 fs-1">
+                Vamos colocar o caminhão<br>
+                pra rodar.
+            </h4>
+            <p class="ms-2 fs-5 my-2 bvP2">A JR Guinchos, oferece um serviço moderno e confiável de reboque de
+                veículos leves,
+                médios e de equipamentos, disponível 24 horas por dia. Estamos sediados em Osório/RS, estendendo
+                nosso atendimento pelos estados do Rio Grande do Sul, Santa Catarina e Paraná, garantindo um
+                pronto atendimento sempre que você precisar.</p>
+
+            <button class="btn btn-danger ms-2"><a href="#contato">Contate-nos</a></button>
+        </div>
+    </div>
+
+    <!--Boas vindas apenas em mobile-->
+    <div class="impact-message d-lg-none" id="impactMessage">
+        <h1 class="impact-text"><span style="color:red;text-shadow:2px 2px 3px black;font-size:1.2em;">JR</span> <span
+                style="color:black;">Guinchos</span><br> Prontos para ajudar <br> sempre que você precisar!</h1>
+        <p class="impact-subtext">Atendimento 24 horas por dia, <br> sete dias por semana.</p>
+        <button class="btn btn-danger"><a href="#contato">Contate-nos</a></button>
+    </div>
+
+
+    <!-- Serviços -->
+    <section id="servicos" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Nossos Serviços</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card h-100 text-center myCards">
+                        <img src="./images/jrRemocMoto1.jpg" class="card-img-top img-fluid" alt="Motocicleta">
+                        <div class="card-body">
+                            <h5 class="card-title">Veículos leves</h5>
+                            <p class="card-text">Transportes de todos os tipos de motocicletas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 text-center myCards">
+                        <img src="./images/jrRemocMedios.jpg" class="card-img-top img-fluid" alt="Mercedinho">
+                        <div class="card-body">
+                            <h5 class="card-title">Veículos médios</h5>
+                            <p class="card-text">Transporte de veículos de médio porte.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 text-center myCards">
+                        <img src="./images/jrRemocEquiptEsp1.jpg" class="card-img-top img-fluid" alt="Aeronave">
+                        <div class="card-body">
+                            <h5 class="card-title">Veículos especiais</h5>
+                            <p class="card-text">Transporte de veículos especiais.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 text-center myCards">
+                        <img src="./images/jrRemocEquipt2Redim.jpg" class="card-img-top img-fluid" alt="Bate estacas">
+                        <div class="card-body">
+                            <h5 class="card-title">Equipamentos</h5>
+                            <p class="card-text">Transporte de equipamentos diversos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Perguntas Frequentes</h2>
+            <div class="accordion" id="accordionFAQ">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Quais tipos de veículos vocês atendem?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionFAQ">
+                        <div class="accordion-body">
+                            Atendemos veículos leves, utilitários, motos e caminhonetes. Para casos específicos, como
+                            veículos de grande porte ou especiais, consulte nossa equipe. Transportamos também
+                            equipamentos.
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            O serviço de guincho está disponível 24 horas?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionFAQ">
+                        <div class="accordion-body">
+                            Sim, nosso serviço de guincho funciona 24 horas por dia, 7 dias por semana, incluindo
+                            feriados.
+                        </div>
+                    </div>
+                </div>-->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Qual a área de cobertura do serviço?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#accordionFAQ">
+                        <div class="accordion-body">
+                            Atendemos em todo o estado do Rio Grande do Sul, Santa Catarina e Paraná. Consulte-nos para
+                            confirmar a disponibilidade em regiões específicas.
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Quanto tempo leva para o guincho chegar até o local?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                        data-bs-parent="#accordionFAQ">
+                        <div class="accordion-body">
+                            O tempo de atendimento pode variar conforme a localização e condições de trânsito, mas
+                            informamos a estimativa no momento da solicitação.
+                        </div>
+                    </div>
+                </div>-->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            O que é necessário para solicitar o guincho?
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                        data-bs-parent="#accordionFAQ">
+                        <div class="accordion-body">
+                            Basta informar sua localização, a situação do veículo (acidente, pane) e um telefone
+                            para contato. Você também pode compartilhar sua localização diretamente pelo WhatsApp.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            O serviço de guincho cobre situações de acidente?
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                        data-bs-parent="#accordionFAQ">
+                        <div class="accordion-body">
+                            Sim, prestamos assistência em caso de acidentes. Auxiliamos na remoção para oficinas ou
+                            seguradoras.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSeven">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                            Qual é o custo do serviço?
+                        </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                        data-bs-parent="#accordionFAQ">
+                        <div class="accordion-body">
+                            O custo varia conforme a distância e a complexidade do transporte. Entre em contato para
+                            obter um orçamento sem compromisso.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingHeight">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseHeight" aria-expanded="false" aria-controls="collapseHeight">
+                            Como faço o pagamento do serviço?
+                        </button>
+                    </h2>
+                    <div id="collapseHeight" class="accordion-collapse collapse" aria-labelledby="headingHeight"
+                        data-bs-parent="#accordionFAQ">
+                        <div class="accordion-body">
+                            Cobramos 50% do valor do serviço no ato da negociação, via pix, quando o serviço for
+                            solicitado fora da cidade de Osório-RS.
+                            Aceitamos pagamento via cartão de crédito, débito, pix e dinheiro.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Galeria oficial-->
+    <section id="galery">
+        <div class="container">
+            <div class="myCarousel mt-5">
+                <!--List items-->
+                <div class="list">
+                    <div class="item">
+                        <img src="./images/jrRemocCar.jpeg" class="img-fluid" alt="Golf vermelho no guincho">
+                        <div class="content">
+                            <div class="title">SLIDER DE FOTOS</div>
+                            <div class="topic">JR GUINCHOS</div>
+                            <div class="author">Joel "Cowboy"</div>
+                            <div class="buttons">
+                                <!--<button>SEE MORE</button>-->
+                                <button>
+                                    <a href="#contato" class="btn-contact">CONTACTAR</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="./images/jrRemocCar1.jpeg" class="img-fluid" alt="Opala Comodoro bordô">
+                        <div class="content">
+                            <div class="title">SLIDER DE FOTOS</div>
+                            <div class="topic">JR GUINCHOS</div>
+                            <div class="author">Joel "Cowboy"</div>
+                            <div class="buttons">
+                                <!--<button>SEE MORE</button>-->
+                                <button>
+                                    <a href="#contato" class="btn-contact">CONTACTAR</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="./images/jrRemocCar5Edit.jpeg" class="img-fluid"
+                            alt="Gol preto na prancha e Corsa branco no reboque">
+                        <div class="content">
+                            <div class="title">SLIDER DE FOTOS</div>
+                            <div class="topic">JR GUINCHOS</div>
+                            <div class="author">Joel "Cowboy"</div>
+                            <div class="buttons">
+                                <!--<button>SEE MORE</button>-->
+                                <button>
+                                    <a href="#contato" class="btn-contact">CONTACTAR</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="./images/jrRemocCar4edit.jpeg" class="img-fluid" alt="Jeep de trilha verde claro">
+                        <div class="content">
+                            <div class="title">SLIDER DE FOTOS</div>
+                            <div class="topic">JR GUINCHOS</div>
+                            <div class="author">Joel "Cowboy"</div>
+                            <div class="buttons">
+                                <!--<button>SEE MORE</button>-->
+                                <button>
+                                    <a href="#contato" class="btn-contact">CONTACTAR</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Thumbnail-->
+                <div class="thumbnail">
+                    <div class="item">
+                        <img src="./images/jrRemocCar.jpeg" class="img-fluid" alt=""></img>
+                    </div>
+                    <div class="item">
+                        <img src="./images/jrRemocCar1.jpeg" class="img-fluid" alt=""></img>
+                    </div>
+                    <div class="item">
+                        <img src="./images/jrRemocCar5Edit.jpeg" class="img-fluid" alt=""></img>
+                    </div>
+                    <div class="item">
+                        <img src="./images/jrRemocCar4edit.jpeg" class="img-fluid" alt=""></img>
+                    </div>
+                </div>
+                <!--arrows-->
+                <div class="arrows">
+                    <button id="prev"> &lt </button>
+                    <button id="next"> &gt </button>
+                </div>
+                <div class="time"></div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Map Section -->
+    <section class="section" id="localizacao">
+        <div class="container">
+            <h2 class="text-center mb-3">Nossa área de atendimento</h2>
+            <div class="position-relative">
+                <div id="map"></div>
+                <button class="locate-btn" onclick="locateCompany()">
+                    <i class="fas fa-location-dot me-2"></i>
+                    Localizar empresa
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fale Conosco -->
+    <section id="contato" class="py-5 bg-primary-gradient sectionContact">
+        <div class="container">
+            <h2 class="text-center mb-5">Fale Conosco</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <div class="mb-4">
+                        <a href="https://wa.me/5551999626407" target="_blank" class="text-decoration-none">
+                            <i class="fab fa-whatsapp contact-icon whatsapp" title="Fale conosco pelo whatsapp"></i>
+                            <span class="fs-5">51 99962-6407</span>
+                        </a>
+                    </div>
+                    <!--<div class="mb-4">
+                        <a href="https://www.facebook.com/" target="_blank" class="text-decoration-none"
+                            title="Visite nossa página no Facebook.">
+                            <i class="fa-brands fa-facebook contact-icon facebook"></i>
+                            <span class="fs-5">jrguinchososorio</span>
+                        </a>
+                    </div>-->
+                    <!--<div class="mb-4">
+                        <a href="https://www.instagram.com/" target="_blank" class="text-decoration-none">
+                            <i class="fab fa-instagram contact-icon instagram" title="Visite nosso Instagram"></i>
+                            <span class="fs-5">@jrguinchos_osorio</span>
+                        </a>
+                    </div>-->
+                    <!--<div class="mb-4">
+                        <i class="far fa-envelope contact-icon mail" onclick="returnMail()"
+                            title=" Clique aqui e copie automaticamente este email para a área de transferência! Abra seu email, clique em 'Escrever' e no campo 'Para:', cole-o!"></i>
+                        <span class="fs-5 emailJrGhinchos">jrguinchososorio@gmail.com</span>
+                    </div>-->
+                    <div class="mb-4">
+                        <a href="tel:+5551999626407" class="contact-link"
+                            title="Ligue pra nós!!!(Específico para mobile)">
+                            <i class="fa-solid fa-phone contact-icon phone"></i>
+                        </a>
+                        <span class="fs-5">(51) 99962-6407</span>
+                    </div>
+
+                    <!-- Contêiner para mensagens de erro -->
+                    <div id="errorMessage" style="color: red; display: none;">
+                        Seu dispositivo não suporta chamadas telefônicas. Por favor, entre em contato por email ou outro
+                        método.
+                    </div>
+
+                    <!-- Horário de Atendimento -->
+                    <div class="mt-4">
+                        <p class="fs-6">Horário de atendimento: Estamos 24 horas por dia, 7 dias por semana sempre
+                            prontos à atendê-lo.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white">
+        <div class="container text-center">
+            <p>&copy; 2024 JRGuinchos. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <script src="./js/indexVictor.js"></script>
+    <script src="./js/sliderVictor.js"></script>
+</body>
+
+</html>
