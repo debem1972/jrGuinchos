@@ -109,7 +109,7 @@ const companyLocation = L.marker([-29.90042, -50.25325]).addTo(map);
 
 function locateCompany() {
     map.setView([-29.90042, -50.25325], 15);
-    companyLocation.bindPopup('Rua Marcílio Dias, 2000<br>Pitangas - Osório - RS').openPopup();
+    companyLocation.bindPopup('<strong>JR Guinchos</strong><br>Rua Marcílio Dias, 2000<br>Pitangas - Osório - RS').openPopup();
 }
 
 //---------------------------------------------------------------------------
